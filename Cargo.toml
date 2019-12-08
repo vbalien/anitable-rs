@@ -1,0 +1,17 @@
+[package]
+name = "anitable-rs"
+version = "0.1.0"
+authors = ["Jisu Kim <vbalien@live.jp>"]
+edition = "2018"
+
+[lib]
+name = "anitable"
+path = "src/lib.rs"
+
+[[bin]]
+name = "anitable"
+path = "src/bin/main.rs"
+
+# See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
+
+[dependencies]
