@@ -15,3 +15,7 @@ path = "src/bin/main.rs"
 # See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
 
 [dependencies]
+tokio = "=0.2.0-alpha.6"
+reqwest = { version = "0.10.0-alpha.2", features = ["json"] }
+serde = { version = "1.0", features = ["derive"] }
+chrono = "0.4"
