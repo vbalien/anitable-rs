@@ -19,6 +19,9 @@ tokio = "=0.2.0-alpha.6"
 reqwest = { version = "0.10.0-alpha.2", features = ["json"] }
 serde = { version = "1.0", features = ["derive"] }
 chrono = "0.4"
+tui = "0.7"
+termion = "1.5"
+failure = "0.1"
 
 [dev-dependencies]
 mockito = "0.22"

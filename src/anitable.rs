@@ -23,27 +23,6 @@ pub struct CaptionData {
     #[serde(rename="s")] pub episode: String,
 }
 
-pub enum Weekday {
-    /// Sunday.
-    Sun = 0,
-    /// Monday.
-    Mon = 1,
-    /// Tuesday.
-    Tue = 2,
-    /// Wednesday.
-    Wed = 3,
-    /// Thursday.
-    Thu = 4,
-    /// Friday.
-    Fri = 5,
-    /// Saturday.
-    Sat = 6,
-    /// Etc
-    Etc = 7,
-    /// New
-    New = 8
-}
-
 pub struct Anitable {
     client: reqwest::Client,
     url: String,
@@ -64,9 +43,9 @@ impl Anitable {
         }
     }
 
-    pub async fn list(&self, week: Weekday) -> Result<Vec<AnimeData>, reqwest::Error> {
+    pub async fn list(&self, week: i32) -> Result<Vec<AnimeData>, reqwest::Error> {
         let mut postdata = HashMap::new();
-        postdata.insert("w", week as i32);
+        postdata.insert("w", week);
         let animes: Vec<AnimeData> = self.client
             .post(&format!("{}/list", self.url))
             .form(&postdata)
