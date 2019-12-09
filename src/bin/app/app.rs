@@ -15,7 +15,7 @@ impl<'a> App<'a> {
     pub fn new() -> Self {
         let local: DateTime<Local> = Local::now();
         Self {
-            tabs: TabsState::new(vec!["일", "월", "화", "수", "목", "금", "토"], (local.weekday() as usize + 1) % 7),
+            tabs: TabsState::new(vec!["일", "월", "화", "수", "목", "금", "토", "기타", "신작"], (local.weekday() as usize + 1) % 7),
             items: vec![],
             selected: 0,
             should_quit: false,

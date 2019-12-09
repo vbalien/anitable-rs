@@ -25,35 +25,7 @@ pub mod option_date_format{
         D: Deserializer<'de>,
     {
         let s = String::deserialize(deserializer)?;
-       Ok(NaiveDate::parse_from_str(&s, FORMAT).ok())
-    }
-}
-
-pub mod date_format{
-    use chrono::NaiveDate;
-    use serde::{self, Deserialize, Serializer, Deserializer};
-
-    const FORMAT: &'static str = "%Y%m%d";
-
-    pub fn serialize<S>(
-        date: &NaiveDate,
-        serializer: S,
-    ) -> Result<S::Ok, S::Error>
-    where
-        S: Serializer,
-    {
-        let s = format!("{}", date.format(FORMAT));
-        serializer.serialize_str(&s)
-    }
-
-    pub fn deserialize<'de, D>(
-        deserializer: D,
-    ) -> Result<NaiveDate, D::Error>
-    where
-        D: Deserializer<'de>,
-    {
-        let s = String::deserialize(deserializer)?;
-        NaiveDate::parse_from_str(&s, FORMAT).map_err(serde::de::Error::custom)
+        Ok(NaiveDate::parse_from_str(&s, FORMAT).ok())
     }
 }
 

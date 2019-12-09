@@ -1,7 +1,7 @@
 use serde::{Deserialize, Serialize};
 use chrono::{DateTime, NaiveDate, Utc};
 use std::collections::HashMap;
-use crate::format::{option_date_format, date_format, datetime_format};
+use crate::format::{option_date_format, datetime_format};
 
 #[derive(Debug, Serialize, Deserialize)]
 pub struct AnimeData {
@@ -11,7 +11,7 @@ pub struct AnimeData {
     #[serde(rename = "i")] pub id: i32,
     #[serde(rename = "l")] pub link: String,
     #[serde(rename = "s")] pub subject: String,
-    #[serde(rename = "sd", with="date_format")] pub start_date: NaiveDate,
+    #[serde(rename = "sd", with="option_date_format")] pub start_date: Option<NaiveDate>,
     #[serde(rename = "t")] pub time: String,
 }
 

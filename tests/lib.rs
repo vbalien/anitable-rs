@@ -23,7 +23,8 @@ async fn test_anitable_list() {
                     "s":"우리는 공부를 못해 2기",
                     "t":"0030","g":"코미디 / 학원물",
                     "l":"https://boku-ben.com  ",
-                    "a":true,"sd":"20191006",
+                    "a":true,
+                    "sd":"20999999",
                     "ed":"00000000"
                 }
             ]"#)
@@ -34,5 +35,5 @@ async fn test_anitable_list() {
     const FORMAT: &'static str = "%Y%m%d";
 
     assert_eq!(4469, data[0].id);
-    assert_eq!(NaiveDate::parse_from_str(&"20191013", FORMAT).unwrap(), data[0].start_date);
+    assert_eq!(NaiveDate::parse_from_str(&"20191013", FORMAT).unwrap(), data[0].start_date.unwrap());
 }

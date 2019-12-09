@@ -8,7 +8,12 @@ use crate::app::app::App;
 
 pub fn draw<B: Backend>(terminal: &mut Terminal<B>, app: &App) -> Result<(), io::Error> {
     terminal.draw(|mut f| {
-        let header = ["시각", "제목", "장르"];
+        let is_etc = app.tabs.index < 7;
+        let header = if is_etc {
+            ["시각", "제목", "장르"]
+        } else {
+            ["날짜", "제목", "장르"]
+        };
         let size = f.size();
         let chunks = Layout::default()
             .direction(Direction::Vertical)
@@ -24,7 +29,15 @@ pub fn draw<B: Backend>(terminal: &mut Terminal<B>, app: &App) -> Result<(), io:
             .and_then(|height| app.selected.checked_sub(height as usize))
             .unwrap_or(0);
         let rows = app.items.iter().skip(offset).enumerate().map(|(i, item)| {
-            let time = format!("{}:{}", &item.time[..2], &item.time[2..]);
+            let time = if is_etc {
+                format!("{}:{}", &item.time[..2], &item.time[2..])
+            } else {
+                if let Some(date) = item.start_date {
+                    date.format("%Y-%m-%d").to_string()
+                } else {
+                    String::from("미정")
+                }
+            };
             let data = vec![time, item.subject.clone(), item.genre.clone()];
             if Some(i) == app.selected.checked_sub(offset) {
                 Row::StyledData(data.into_iter(), selected_style)
@@ -60,7 +73,7 @@ pub fn draw<B: Backend>(terminal: &mut Terminal<B>, app: &App) -> Result<(), io:
                     .borders(Borders::ALL)
             )
             .widths(&[
-                Constraint::Length(7),
+                Constraint::Length(if is_etc {7} else {10}),
                 Constraint::Percentage(100),
                 Constraint::Length(15),
             ])
