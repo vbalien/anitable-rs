@@ -17,13 +17,13 @@ pub fn draw<B: Backend>(terminal: &mut Terminal<B>, app: &App) -> Result<(), io:
         let size = f.size();
         let chunks = Layout::default()
             .direction(Direction::Vertical)
-            .constraints([Constraint::Length(3), Constraint::Length(3), Constraint::Min(0)].as_ref())
+            .constraints([Constraint::Length(3), Constraint::Min(0), Constraint::Length(3)].as_ref())
             .split(size);
         let selected_style = Style::default().fg(Color::Yellow).modifier(Modifier::BOLD);
         let normal_style = Style::default().fg(Color::White);
 
         let padding = 5;
-        let offset = chunks[2]
+        let offset = chunks[1]
             .height
             .checked_sub(padding)
             .and_then(|height| app.selected.checked_sub(height as usize))
@@ -57,19 +57,18 @@ pub fn draw<B: Backend>(terminal: &mut Terminal<B>, app: &App) -> Result<(), io:
             )
             .alignment(Alignment::Center)
             .wrap(true)
-            .render(&mut f, chunks[0]);
+            .render(&mut f, chunks[2]);
         Tabs::default()
-            .block(Block::default().borders(Borders::ALL).title("요일"))
+            .block(Block::default().borders(Borders::ALL).title("애니편성표"))
             .titles(&app.tabs.titles)
             .select(app.tabs.index)
             .style(Style::default().fg(Color::Cyan))
             .highlight_style(Style::default().fg(Color::Yellow))
-            .render(&mut f, chunks[1]);
+            .render(&mut f, chunks[0]);
 
         Table::new(header.iter(), rows)
             .block(
                 Block::default()
-                    .title("애니목록")
                     .borders(Borders::ALL)
             )
             .widths(&[
@@ -77,6 +76,6 @@ pub fn draw<B: Backend>(terminal: &mut Terminal<B>, app: &App) -> Result<(), io:
                 Constraint::Percentage(100),
                 Constraint::Length(15),
             ])
-            .render(&mut f, chunks[2]);
+            .render(&mut f, chunks[1]);
     })
 }
