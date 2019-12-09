@@ -19,3 +19,8 @@ tokio = "=0.2.0-alpha.6"
 reqwest = { version = "0.10.0-alpha.2", features = ["json"] }
 serde = { version = "1.0", features = ["derive"] }
 chrono = "0.4"
+mockito = "0.22"
+
+[[test]]
+name = "test"
+path = "tests/lib.rs"
