@@ -4,7 +4,7 @@
 ## Library
 ### 사용예제
 ```rust
-use anitable::anitable::*;
+use anitable::*;
 
 #[tokio::main]
 async fn main() -> Result<(), failure::Error> {

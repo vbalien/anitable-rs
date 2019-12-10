@@ -11,7 +11,7 @@ mod app;
 mod util;
 use util::event::{Event, Events};
 use app::ui;
-use app::app::App;
+use app::App;
 
 #[tokio::main]
 async fn main() -> Result<(), failure::Error> {

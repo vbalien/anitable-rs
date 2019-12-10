@@ -4,7 +4,8 @@ use tui::widgets::{Block, Borders, Tabs, Widget, Text, Paragraph, Table, Row};
 use tui::backend::Backend;
 use tui::Terminal;
 use std::io;
-use crate::app::app::App;
+use crate::app::App;
+
 
 pub fn draw<B: Backend>(terminal: &mut Terminal<B>, app: &App) -> Result<(), io::Error> {
     terminal.draw(|mut f| {

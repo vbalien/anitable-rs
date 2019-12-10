@@ -1,6 +1,7 @@
-use anitable::anitable::*;
+use anitable::*;
 use mockito::mock;
 use chrono::NaiveDate;
+
 
 #[tokio::test]
 async fn test_anitable_list() {

@@ -2,7 +2,8 @@ use std::vec;
 use chrono::{Local, DateTime, Datelike};
 use std::convert::TryFrom;
 use crate::util::TabsState;
-use ::anitable::anitable::*;
+use ::anitable::*;
+
 
 pub struct App<'a> {
     pub tabs: TabsState<'a>,

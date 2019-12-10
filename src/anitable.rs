@@ -4,6 +4,7 @@ use std::collections::HashMap;
 use crate::format::{option_date_format, datetime_format};
 use num_enum::TryFromPrimitive;
 
+
 #[derive(Debug, Serialize, Deserialize)]
 pub struct AnimeData {
     #[serde(rename = "a")] pub alive: bool,
