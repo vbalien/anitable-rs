@@ -2,6 +2,7 @@ use serde::{Deserialize, Serialize};
 use chrono::{DateTime, NaiveDate, Utc};
 use std::collections::HashMap;
 use crate::format::{option_date_format, datetime_format};
+use num_enum::TryFromPrimitive;
 
 #[derive(Debug, Serialize, Deserialize)]
 pub struct AnimeData {
@@ -21,6 +22,29 @@ pub struct CaptionData {
     #[serde(rename="d", with="datetime_format")] pub date: DateTime<Utc>,
     #[serde(rename="n")] pub author: String,
     #[serde(rename="s")] pub episode: String,
+}
+
+#[derive(TryFromPrimitive)]
+#[repr(u8)]
+pub enum Weekday {
+    /// Sunday.
+    Sun = 0u8,
+    /// Monday.
+    Mon = 1u8,
+    /// Tuesday.
+    Tue = 2u8,
+    /// Wednesday.
+    Wed = 3u8,
+    /// Thursday.
+    Thu = 4u8,
+    /// Friday.
+    Fri = 5u8,
+    /// Saturday.
+    Sat = 6u8,
+    /// Etc
+    Etc = 7u8,
+    /// New
+    New = 8u8
 }
 
 pub struct Anitable {
@@ -43,9 +67,9 @@ impl Anitable {
         }
     }
 
-    pub async fn list(&self, week: i32) -> Result<Vec<AnimeData>, reqwest::Error> {
+    pub async fn list(&self, week: Weekday) -> Result<Vec<AnimeData>, reqwest::Error> {
         let mut postdata = HashMap::new();
-        postdata.insert("w", week);
+        postdata.insert("w", week as u8);
         let animes: Vec<AnimeData> = self.client
             .post(&format!("{}/list", self.url))
             .form(&postdata)

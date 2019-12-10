@@ -1,5 +1,6 @@
 use std::vec;
-use chrono::*;
+use chrono::{Local, DateTime, Datelike};
+use std::convert::TryFrom;
 use crate::util::TabsState;
 use ::anitable::anitable::*;
 
@@ -25,7 +26,8 @@ impl<'a> App<'a> {
 
     pub async fn get_list(&mut self) {
         self.selected = 0;
-        self.items = self.client.list(self.tabs.index as i32).await.unwrap();
+        let weekday = Weekday::try_from(self.tabs.index as u8).unwrap();
+        self.items = self.client.list(weekday).await.unwrap();
     }
 
     pub async fn on_key(&mut self, key: char) {
