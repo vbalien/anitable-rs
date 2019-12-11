@@ -20,7 +20,7 @@ async fn main() -> Result<(), failure::Error> {
 
 ## TUI
 ### 미리보기
-![screenshot](./screenshot.png)
+![screenshot](./screenshot.gif)
 
 ### 필요
 * rust nightly 버전 이상 (`rustc 1.41.0-nightly (412f43ac5 2019-11-24)`)
