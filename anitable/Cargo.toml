@@ -8,6 +8,7 @@ description = """
 rust 애니시아 애니편성표 API
 """
 keywords = ["anissia", "anime"]
+documentation = "https://docs.rs/anitable"
 repository = "https://github.com/vbalien/anitable-rs"
 license = "MIT"
 readme = "../README.md"
