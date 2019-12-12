@@ -10,6 +10,7 @@ rust 애니시아 애니편성표 API
 keywords = ["anissia", "anime"]
 repository = "https://github.com/vbalien/anitable-rs"
 license = "MIT"
+readme = "../README.md"
 
 [dependencies]
 reqwest = { version = "0.10.0-alpha.2", features = ["json"] }
