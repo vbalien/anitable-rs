@@ -13,6 +13,9 @@ repository = "https://github.com/vbalien/anitable-rs"
 license = "MIT"
 readme = "README.md"
 
+[badges]
+travis-ci = { repository = "vbalien/anitable-rs", branch = "master" }
+
 [dependencies]
 reqwest = { version = "0.10.0-alpha.2", features = ["json"] }
 serde = { version = "1.0", features = ["derive"] }

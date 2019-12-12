@@ -2,6 +2,7 @@
 [![Crates.io](https://img.shields.io/crates/v/anitable)](https://crates.io/crates/anitable)
 [![documentation](https://docs.rs/anitable/badge.svg)](https://docs.rs/anitable)
 ![Crates.io](https://img.shields.io/crates/l/anitable)
+[![Travis (.com)](https://img.shields.io/travis/com/vbalien/anitable-rs)](https://travis-ci.com/vbalien/anitable-rs)
 
 애니시아 애니편성표 API client library
 
