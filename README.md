@@ -11,9 +11,9 @@
 use anitable::*;
 
 #[tokio::main]
-async fn main() -> Result<(), failure::Error> {
+async fn main() -> Result<(), reqwest::Error> {
     let client = Anitable::new();
-    let data = client.list(Weekday::Sun).await?; // 일요일
+    let data = client.list(Tabletype::Sun).await?; // 일요일
     println!("{:?}", data); // 애니목록 출력
 
     let data = client.cap(data[0].id).await?; // 애니목록 0번째 자막
