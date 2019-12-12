@@ -68,7 +68,7 @@ pub enum Tabletype {
 /// use anitable::*;
 ///
 /// #[tokio::main]
-/// async fn main() -> Result<(), failure::Error> {
+/// async fn main() -> Result<(), reqwest::Error> {
 ///     let client = Anitable::new();
 ///     let data = client.list(Tabletype::Sun).await?; // 일요일
 ///     println!("{:?}", data); // 애니목록 출력
@@ -87,7 +87,9 @@ impl Anitable {
     /// 테스트를 위한 생성자
     /// # Example
     /// ```
-    ///  let client = Anitable::new_with_host(&mockito::server_url());
+    /// use anitable::*;
+    /// use mockito::mock;
+    /// let client = Anitable::new_with_host(&mockito::server_url());
     /// ```
     pub fn new_with_host(host: &str) -> Self {
         Self {
@@ -99,7 +101,8 @@ impl Anitable {
     /// 일반 생성자
     /// # Example
     /// ```
-    ///  let client = Anitable::new();
+    /// use anitable::*;
+    /// let client = Anitable::new();
     /// ```
     pub fn new() -> Self {
         Self {
@@ -117,7 +120,13 @@ impl Anitable {
     /// # Example
     /// 
     /// ```
-    /// let animations = client.list(Tabletype::Sun).await?;
+    /// #[tokio::main]
+    /// async fn main() -> Result<(), reqwest::Error> {
+    ///     use anitable::*;
+    ///     let client = Anitable::new();
+    ///     let animations = client.list(Tabletype::Sun).await?;
+    ///     Ok(())
+    /// }
     /// ```
     pub async fn list(&self, tabletype: Tabletype) -> Result<Vec<AnimeData>, reqwest::Error> {
         let mut postdata = HashMap::new();
@@ -142,7 +151,14 @@ impl Anitable {
     /// # Example
     /// 
     /// ```
-    /// let captions = client.cap(anime.id).await?;
+    /// #[tokio::main]
+    /// async fn main() -> Result<(), reqwest::Error> {
+    ///     use anitable::*;
+    ///     let client = Anitable::new();
+    ///     let animations = client.list(Tabletype::Sun).await?;
+    ///     let captions = client.cap(animations.get(0).unwrap().id).await?;
+    ///     Ok(())
+    /// }
     /// ```
     pub async fn cap(&self, anime_id: i32) -> Result<Vec<CaptionData>, reqwest::Error> {
         let mut postdata = HashMap::new();

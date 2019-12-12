@@ -1,6 +1,29 @@
-[workspace]
+[package]
+name = "anitable"
+version = "0.1.0"
+authors = ["Jisu Kim <vbalien@live.jp>"]
+edition = "2018"
+doc = true
+description = """
+rust 애니시아 애니편성표 API
+"""
+keywords = ["anissia", "anime"]
+documentation = "https://docs.rs/anitable"
+repository = "https://github.com/vbalien/anitable-rs"
+license = "MIT"
+readme = "README.md"
 
-members = [
-    "anitable",
-    "anitable-tui",
-]
+[dependencies]
+reqwest = { version = "0.10.0-alpha.2", features = ["json"] }
+serde = { version = "1.0", features = ["derive"] }
+num_enum = "0.4.2"
+chrono = "0.4"
+
+[dev-dependencies]
+tokio = "=0.2.0-alpha.6"
+mockito = "0.22"
+
+[[test]]
+name = "test"
+path = "tests/lib.rs"
+doc = false

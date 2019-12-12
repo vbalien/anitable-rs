@@ -1,4 +1,4 @@
-use anitable::*;
+use ::anitable::*;
 use mockito::mock;
 use chrono::NaiveDate;
 
