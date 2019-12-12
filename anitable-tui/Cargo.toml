@@ -4,7 +4,12 @@ version = "0.1.0"
 authors = ["Jisu Kim <vbalien@live.jp>"]
 edition = "2018"
 doc = false
-# See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
+description = """
+애니편성표 TUI
+"""
+keywords = ["tui", "anissia", "anime"]
+repository = "https://github.com/vbalien/anitable-rs"
+license = "MIT"
 
 [dependencies]
 anitable = { path = "../anitable" }

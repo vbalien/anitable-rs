@@ -4,8 +4,12 @@ version = "0.1.0"
 authors = ["Jisu Kim <vbalien@live.jp>"]
 edition = "2018"
 doc = true
-
-# See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
+description = """
+rust 애니시아 애니편성표 API
+"""
+keywords = ["anissia", "anime"]
+repository = "https://github.com/vbalien/anitable-rs"
+license = "MIT"
 
 [dependencies]
 reqwest = { version = "0.10.0-alpha.2", features = ["json"] }
