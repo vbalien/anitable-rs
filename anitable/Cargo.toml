@@ -3,6 +3,7 @@ name = "anitable"
 version = "0.1.0"
 authors = ["Jisu Kim <vbalien@live.jp>"]
 edition = "2018"
+doc = true
 
 # See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
 
@@ -19,3 +20,4 @@ mockito = "0.22"
 [[test]]
 name = "test"
 path = "tests/lib.rs"
+doc = false

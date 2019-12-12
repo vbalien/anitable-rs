@@ -27,8 +27,8 @@ impl<'a> App<'a> {
 
     pub async fn get_list(&mut self) {
         self.selected = 0;
-        let weekday = Weekday::try_from(self.tabs.index as u8).unwrap();
-        self.items = self.client.list(weekday).await.unwrap();
+        let tabletype = Tabletype::try_from(self.tabs.index as u8).unwrap();
+        self.items = self.client.list(tabletype).await.unwrap();
     }
 
     pub async fn on_key(&mut self, key: char) {

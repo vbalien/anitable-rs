@@ -32,7 +32,7 @@ async fn test_anitable_list() {
       .create();
 
     let client = Anitable::new_with_host(&mockito::server_url());
-    let data = client.list(Weekday::Mon).await.unwrap();
+    let data = client.list(Tabletype::Mon).await.unwrap();
     const FORMAT: &'static str = "%Y%m%d";
 
     assert_eq!(4469, data[0].id);

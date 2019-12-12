@@ -1,3 +1,3 @@
 mod anitable;
-pub mod format;
+mod format;
 pub use self::anitable::*;
