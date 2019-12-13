@@ -5,7 +5,7 @@ use crate::format::{option_date_format, datetime_format};
 use num_enum::TryFromPrimitive;
 
 /// 애니메이션 정보를 담는 자료형
-#[derive(Debug, Serialize, Deserialize)]
+#[derive(Debug, Serialize, Deserialize, Clone)]
 pub struct AnimeData {
     /// 방영중 여부
     #[serde(rename = "a")] pub alive: bool,
@@ -26,7 +26,7 @@ pub struct AnimeData {
 }
 
 /// 자막 정보를 담는 자료형
-#[derive(Debug, Serialize, Deserialize)]
+#[derive(Debug, Serialize, Deserialize, Clone)]
 pub struct CaptionData {
     /// 다운로드 페이지
     #[serde(rename="a")] pub link: String,
