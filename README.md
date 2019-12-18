@@ -3,6 +3,7 @@
 [![documentation](https://docs.rs/anitable/badge.svg)](https://docs.rs/anitable)
 ![Crates.io](https://img.shields.io/crates/l/anitable)
 [![Build Status](https://travis-ci.com/vbalien/anitable-rs.svg?branch=master)](https://travis-ci.com/vbalien/anitable-rs)
+[![Build Status](https://drone.alien.moe/api/badges/vbalien/anitable-rs/status.svg)](https://drone.alien.moe/vbalien/anitable-rs)
 
 애니시아 애니편성표 API client library
 
