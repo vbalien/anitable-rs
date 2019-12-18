@@ -1,6 +1,6 @@
 kind: pipeline
 type: docker
-name: default
+name: rust-nightly
 
 steps:
 - name: test
@@ -12,4 +12,21 @@ steps:
   image: rustlang/rust:nightly
   commands:
   - cargo build --verbose --all
+
+---
+kind: pipeline
+type: docker
+name: rust-1-39
+
+steps:
+- name: test
+  image: rust:1.39
+  commands:
+  - cargo test --verbose --all
+
+- name: build
+  image: rust:1.39
+  commands:
+  - cargo build --verbose --all
+
 
