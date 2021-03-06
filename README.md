@@ -1,4 +1,5 @@
 # Anitable
+
 [![Crates.io](https://img.shields.io/crates/v/anitable)](https://crates.io/crates/anitable)
 [![documentation](https://docs.rs/anitable/badge.svg)](https://docs.rs/anitable)
 ![Crates.io](https://img.shields.io/crates/l/anitable)
@@ -8,8 +9,11 @@
 애니시아 애니편성표 API client library
 
 ### 사용예제
+
+### 애니시아 API v1 (`deprecated`)
+
 ```rust
-use anitable::*;
+use anitable::v1::*;
 
 #[tokio::main]
 async fn main() -> Result<(), reqwest::Error> {
@@ -24,4 +28,5 @@ async fn main() -> Result<(), reqwest::Error> {
 ```
 
 ## License
+
 MIT

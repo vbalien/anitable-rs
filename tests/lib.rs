@@ -1,14 +1,14 @@
-use ::anitable::*;
-use mockito::mock;
+use ::anitable::v1::*;
 use chrono::NaiveDate;
-
+use mockito::mock;
 
 #[tokio::test]
-async fn test_anitable_list() {
+async fn test_anitable_v1_list() {
     let _m = mock("POST", "/list")
         .with_status(200)
         .with_header("content-type", "application/json")
-        .with_body(r#"
+        .with_body(
+            r#"
             [
                 {
                     "i":4469,
@@ -28,13 +28,17 @@ async fn test_anitable_list() {
                     "sd":"20999999",
                     "ed":"00000000"
                 }
-            ]"#)
-      .create();
+            ]"#,
+        )
+        .create();
 
     let client = Anitable::new_with_host(&mockito::server_url());
     let data = client.list(Tabletype::Mon).await.unwrap();
     const FORMAT: &'static str = "%Y%m%d";
 
-    assert_eq!(4469, data[0].id);
-    assert_eq!(NaiveDate::parse_from_str(&"20191013", FORMAT).unwrap(), data[0].start_date.unwrap());
+    assert_eq!(data[0].id, 4469);
+    assert_eq!(
+        data[0].start_date.unwrap(),
+        NaiveDate::parse_from_str(&"20191013", FORMAT).unwrap()
+    );
 }
