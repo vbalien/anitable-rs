@@ -10,7 +10,7 @@
 
 ### 사용예제
 
-### 애니시아 API v1 (`deprecated`)
+### 애니시아 API v1 `deprecated`
 
 ```rust
 use anitable::v1::*;
