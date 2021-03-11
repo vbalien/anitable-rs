@@ -1,7 +1,9 @@
+use ::anitable::types::*;
 use ::anitable::v1::*;
 use chrono::NaiveDate;
 use mockito::mock;
 
+#[allow(deprecated)]
 #[tokio::test]
 async fn test_anitable_v1_list() {
     let _m = mock("POST", "/list")

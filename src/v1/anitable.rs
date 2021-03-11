@@ -1,6 +1,6 @@
+use crate::types::*;
 use crate::v1::format::{datetime_format, option_date_format};
 use chrono::{DateTime, NaiveDate, Utc};
-use num_enum::TryFromPrimitive;
 use serde::{Deserialize, Serialize};
 use std::collections::HashMap;
 
@@ -50,34 +50,11 @@ pub struct CaptionData {
     pub episode: String,
 }
 
-/// 편성표 구분을 위한 `enum`
-#[derive(TryFromPrimitive)]
-#[repr(u8)]
-pub enum Tabletype {
-    /// 일요일
-    Sun = 0u8,
-    /// 월요일
-    Mon = 1u8,
-    /// 화요일
-    Tue = 2u8,
-    /// 수요일
-    Wed = 3u8,
-    /// 목요일
-    Thu = 4u8,
-    /// 금요일
-    Fri = 5u8,
-    /// 토요일
-    Sat = 6u8,
-    /// 기타
-    Etc = 7u8,
-    /// 신작
-    New = 8u8,
-}
-
 /// # 애니편성표 API Wrapper
 /// ## Example
 /// ```
 /// use anitable::v1::*;
+/// use anitable::types::*;
 ///
 /// #[tokio::main]
 /// async fn main() -> Result<(), reqwest::Error> {
@@ -95,11 +72,13 @@ pub struct Anitable {
     url: String,
 }
 
+#[deprecated(since = "0.2", note = "v2를 사용해주세요.")]
 impl Anitable {
     /// 테스트를 위한 생성자
     /// # Example
     /// ```
     /// use anitable::v1::*;
+    /// use anitable::types::*;
     /// use mockito::mock;
     /// let client = Anitable::new_with_host(&mockito::server_url());
     /// ```
@@ -134,6 +113,7 @@ impl Anitable {
     /// ```
     /// #[tokio::main]
     /// async fn main() -> Result<(), reqwest::Error> {
+    ///     use anitable::types::*;
     ///     use anitable::v1::*;
     ///     let client = Anitable::new();
     ///     let animations = client.list(Tabletype::Sun).await?;
@@ -166,6 +146,7 @@ impl Anitable {
     /// #[tokio::main]
     /// async fn main() -> Result<(), reqwest::Error> {
     ///     use anitable::v1::*;
+    ///     use anitable::types::*;
     ///     let client = Anitable::new();
     ///     let animations = client.list(Tabletype::Sun).await?;
     ///     let captions = client.cap(animations.get(0).unwrap().id).await?;
