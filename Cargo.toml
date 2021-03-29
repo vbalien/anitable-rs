@@ -1,13 +1,13 @@
 [package]
 name = "anitable"
-version = "0.1.0"
-authors = ["Jisu Kim <vbalien@live.jp>"]
+version = "0.2.0"
+authors = ["Jisu Kim <webmaster@alien.moe>"]
 edition = "2018"
 doc = true
 description = """
 rust 애니시아 애니편성표 API
 """
-keywords = ["anissia", "anime"]
+keywords = ["anissia", "anime", "애니시아", "애니편성표", "애니"]
 documentation = "https://docs.rs/anitable"
 repository = "https://github.com/vbalien/anitable-rs"
 license = "MIT"
@@ -17,14 +17,15 @@ readme = "README.md"
 travis-ci = { repository = "vbalien/anitable-rs", branch = "master" }
 
 [dependencies]
-reqwest = { version = "0.10.0-alpha.2", features = ["json"] }
+reqwest = { version = "0.11", features = ["json"] }
+tokio = { version = "1", features = ["full"] }
 serde = { version = "1.0", features = ["derive"] }
-num_enum = "0.4.2"
+num_enum = "0.5.1"
 chrono = "0.4"
 
 [dev-dependencies]
-tokio = "=0.2.0-alpha.6"
-mockito = "0.22"
+tokio = "1"
+mockito = "0.29"
 
 [[test]]
 name = "test"

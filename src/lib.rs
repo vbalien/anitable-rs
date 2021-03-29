@@ -1,3 +1,2 @@
-mod anitable;
-mod format;
-pub use self::anitable::*;
+pub mod types;
+pub mod v1;
